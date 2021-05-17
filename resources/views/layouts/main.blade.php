@@ -16,12 +16,12 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="collapse navbar-collapse" id="navbar">
             <a href="/" class="navbar-brand">
-                <img src="/img/ixc.svg" alt="Ixc soft">
+                <img src="/img/ixc.png" alt="Ixc soft">
             </a>
             <ul class="navbar-nav">
                 @auth
                     <li class="nav-item">
-                        <a href="/404" class="nav-link">Decriptografar</a>
+                        <a href="/encdec" class="nav-link">Decriptografar</a>
                     </li>
                     <li class="nav-item">
                         <form action="/logout" method="POST">

@@ -53,7 +53,7 @@ class UsersController extends Controller
         $user->save();
 
 
-        return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');;
+        return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');
     }
 
 
