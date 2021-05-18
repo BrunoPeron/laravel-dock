@@ -12,46 +12,51 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dash', function () {
-    return view('admin_layout');
-});
-
-
-
-
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\LogsController;
 
-Route::get('/users/create', [UsersController::class, 'create']);
-Route::get('/users/post', [UsersController::class, 'create']);
-Route::post('/users/post', [UsersController::class, 'store']);
+
+//Route::get('/', function () {
+//    return view('dashboard');
+//})->middleware('auth');
+
+Route::get('/', function () {
+    $cargo = UsersController::getcargo();
+    return view('dashboard', ['cargo' => $cargo]);
+})->middleware('auth');
+
+
+
+
+
+
+
+Route::get('/users/create', [UsersController::class, 'create'])->middleware('auth');
+Route::get('/users/post', [UsersController::class, 'create'])->middleware('auth');
+Route::post('/users/post', [UsersController::class, 'store'])->middleware('auth');
 //Route::get('/users/remove/{id}', [UsersController::class, 'destroy']);
-Route::delete('/users/delete/{id}', [UsersController::class, 'destroy']);
-Route::get('/users/update/{id}', [UsersController::class, 'update']);
-Route::get('/users/list', [UsersController::class, 'index']);
+Route::delete('/users/delete/{id}', [UsersController::class, 'destroy'])->middleware('auth');
+Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->middleware('auth');
+Route::get('/users/list', [UsersController::class, 'index'])->middleware('auth');
+Route::put('/users/edit/{id}', [UsersController::class, 'update'])->middleware('auth');
 
 
-
-Route::get('/encdec', [LogsController::class, 'create']);
-Route::get('/encdec/post', [LogsController::class, 'create']);
-Route::post('/encdec/post', [LogsController::class, 'store']);
-Route::get('/logs/list', [LogsController::class, 'index']);
+Route::get('/encdec', [LogsController::class, 'create'])->middleware('auth');
+Route::get('/encdec/post', [LogsController::class, 'create'])->middleware('auth');
+Route::post('/encdec/post', [LogsController::class, 'store'])->middleware('auth');
+Route::get('/logs/list', [LogsController::class, 'index'])->middleware('auth');
 Route::get('/logs/list/search', function (){
     $busca['text'] = request('text');
     $busca['type'] = request('type');
+//    $busca['page'] = request('page');
     $logController = new LogsController();
     return $logController->consulta($busca);
-});
-//Route::get('/logs/list/', [LogsController::class, 'consulta']);
+})->middleware('auth');
 
+Route::get('/encdec_elastic', [LogsController::class, 'create_elastic'])->middleware('auth');
+Route::get('/encdec_elastic/post', [LogsController::class, 'create_elastic'])->middleware('auth');
+Route::post('/encdec_elastic/post', [LogsController::class, 'store_elastic'])->middleware('auth');
 
-
-//Route::resource('logs', 'App\Http\Controllers\LogsController');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

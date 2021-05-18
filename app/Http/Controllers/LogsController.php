@@ -22,8 +22,9 @@ class LogsController extends Controller
         $logs = DB::table('logs')
             ->leftJoin('users', 'users.id', '=', 'logs.id_user')
             ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
-            ->orderBy('logs.id')
-            ->paginate(3);
+            ->orderBy('logs.id', 'desc')
+//            ->paginate(3);
+            ->get();
         return view('/logs/list', ['logs' => $logs, 'cargo' => $userLog->cargo]);
     }
 
@@ -34,13 +35,14 @@ class LogsController extends Controller
      */
     public function consulta($request = null){
         $userLog = User::where('id', '=', auth()->id())->first();
-        $valor = $request['type'] == 'string_request' ? md5($request['text']) : $request['text'];
+        $valor = $request['type'] == 'logs.string_request' ? md5($request['text']) : $request['text'];
         $logs = DB::table('logs')
             ->where($request['type'], '=', $valor)
             ->leftJoin('users', 'users.id', '=', 'logs.id_user')
             ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
-            ->orderBy('logs.id')
-            ->paginate(3);
+            ->orderBy('logs.id', 'desc')
+//            ->paginate(3);
+            ->get();
         return view('/logs/list', ['logs' => $logs, 'cargo' => $userLog->cargo]);
     }
 
@@ -52,6 +54,11 @@ class LogsController extends Controller
     public function create()
     {
         return view('encdec');
+    }
+
+    public function create_elastic()
+    {
+        return view('encdec_elastic');
     }
 
     /**
@@ -69,6 +76,17 @@ class LogsController extends Controller
         $logs->save();
 
         return redirect('/encdec')->with('resposta', $request->string_request);
+    }
+
+    public function store_elastic(Request $request)
+    {
+        $logs = new Logs();
+        $logs->data_consulta = date('Y-m-d H:i:s');
+        $logs->string_request = md5($request->string_request);
+        $logs->id_user = auth()->id();
+        $logs->save();
+
+        return redirect('/encdec_elastic')->with('resposta', $request->string_request);
     }
 
     /**

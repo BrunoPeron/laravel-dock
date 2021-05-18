@@ -23,6 +23,7 @@
                     <li class="nav-item">
                         <a href="/encdec" class="nav-link">Decriptografar</a>
                     </li>
+
                     <li class="nav-item">
                         <form action="/logout" method="POST">
                             @csrf

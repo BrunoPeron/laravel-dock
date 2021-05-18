@@ -25,9 +25,11 @@
                                     </form>
                                 </td>
                             </tr>
+
                         @endforeach
                         </tbody>
                     </table>
+                    <a href="/users/create">Criar um usuario</a>
                     <p1>{{$status ?? ''}}</p1>
                 </div>
             </div>

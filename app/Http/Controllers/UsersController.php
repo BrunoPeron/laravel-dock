@@ -22,6 +22,12 @@ class UsersController extends Controller
         return view('/users/list', ['users' => $user, 'cargo' => $userLog->cargo]);
     }
 
+    public static function getcargo()
+    {
+        $userLog = User::where('id', '=', auth()->id())->first();
+        return $userLog->cargo;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -76,7 +82,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users/edit', ['user' => $user]);
     }
 
     /**
@@ -86,9 +93,20 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::where('email', '=', $request->email)->first();
+//        if ($user != null) {
+//            return redirect('/users/edit/'.$request->id)->with('msg-alert', 'Email ja cadastrado');
+//        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $var = ['name' => $request->name, 'email' => $user->email, 'password' => Hash::make($request->password)];
+
+        User::findOrFail($request->id)->update($var);
+        return redirect('/users/list')->with('msg', 'Usuario editado com sucesso');
+
     }
 
     /**

@@ -14,7 +14,8 @@
                         <input type="text" value="" class="form-control" placeholder="Search..." style=" border-radius: 10px" name="text">
                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
                             <ion-icon name="search"></ion-icon>
-                            <div class="ripple-container"></div>
+                            <div class="ripple-container">
+                            </div>
                         </button>
                     </div>
                     <div style="margin-top: 10px">
@@ -26,59 +27,62 @@
                             <input type="radio"  name="type" value="users.email"> Email
                             {{--            a senha sera criptografada no banco por md5                --}}
                         </div>
-                    </div>
                         <a href="/logs/list" class="nav-link" style="color: black">Limpar consulta</a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Nome
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
-                                    <th>
-                                        Senha decriptografada
-                                    </th>
-                                    <th>
-                                        Data da consulta
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($logs as $log)
-                            <tr>
-                                <td>
-                                    {{$log->id}}
-                                </td>
-                                <td>
-                                    {{$log->name}}
-                                </td>
-                                <td>
-                                    {{$log->email}}
-                                </td>
-                                <td>
-                                    {{$log->string_request}}
-                                </td>
-                                <td>
-                                    {{$log->data_consulta}}
-                                </td>
-                            </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
                     </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Nome
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Senha decriptografada
+                                        </th>
+                                        <th>
+                                            Data da consulta
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($logs as $log)
+                                <tr>
+                                    <td>
+                                        {{$log->id}}
+                                    </td>
+                                    <td>
+                                        {{$log->name}}
+                                    </td>
+                                    <td>
+                                        {{$log->email}}
+                                    </td>
+                                    <td>
+                                        {{$log->string_request}}
+                                    </td>
+                                    <td>
+                                        {{$log->data_consulta}}
+                                    </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </form>
+{{--                    <button onclick={{$logs->nextPageUrl()}}></button>--}}
                 </div>
             </div>
         </div>
-        </form>
-        {{$logs->links()}}
+
+{{--        {{$logs->links()}}--}}
+{{--            {{$logs->appends('search')->links()}}--}}
     </div>
     @endif
 @endsection
