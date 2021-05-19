@@ -21,13 +21,15 @@
                     <div style="margin-top: 10px">
                         <label for="title">Consultar por ...</label>
                         <div>
-                            <input type="radio"  name="type" value="users.name" checked> Usuario
-                            <input type="radio"  name="type" value="logs.data_consulta"> Data
-                            <input type="radio"  name="type" value="logs.string_request"> Senha decriptografada
-                            <input type="radio"  name="type" value="users.email"> Email
+                            <input type="radio"  name="type" value="users.name" {{$checked['users.name']}}> Usuario
+                            <input type="radio"  name="type" value="logs.data_consulta" {{$checked['logs.data_consulta']}}> Data
+                            <input type="radio"  name="type" value="logs.string_request" {{$checked['logs.string_request']}}> Senha decriptografada
+                            <input type="radio"  name="type" value="users.email" {{$checked['users.email']}}> Email
                             {{--            a senha sera criptografada no banco por md5                --}}
                         </div>
-                        <a href="/logs/list" class="nav-link" style="color: black">Limpar consulta</a>
+                        <div class="btn btn-primary" style="width: 160px; height: 40px;">
+                        <a href="/logs/list" style="color: black">Limpar consulta</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -42,9 +44,6 @@
                                         </th>
                                         <th>
                                             Email
-                                        </th>
-                                        <th>
-                                            Senha decriptografada
                                         </th>
                                         <th>
                                             Data da consulta
@@ -64,9 +63,6 @@
                                         {{$log->email}}
                                     </td>
                                     <td>
-                                        {{$log->string_request}}
-                                    </td>
-                                    <td>
                                         {{$log->data_consulta}}
                                     </td>
                                 </tr>
@@ -76,13 +72,17 @@
                         </div>
                     </div>
                     </form>
-{{--                    <button onclick={{$logs->nextPageUrl()}}></button>--}}
+                <div style="margin-left: 35%">
+                    @if(isset($request))
+                        {!! $logs->appends($request)->links() !!}
+                    @else
+                        {!! $logs->links() !!}
+                    @endif
+                </div>
                 </div>
             </div>
         </div>
 
-{{--        {{$logs->links()}}--}}
-{{--            {{$logs->appends('search')->links()}}--}}
     </div>
     @endif
 @endsection
