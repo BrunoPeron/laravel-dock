@@ -27,10 +27,6 @@ Route::get('/', function () {
 
 
 
-
-
-
-
 Route::get('/users/create', [UsersController::class, 'create'])->middleware('auth');
 Route::get('/users/post', [UsersController::class, 'create'])->middleware('auth');
 Route::post('/users/post', [UsersController::class, 'store'])->middleware('auth');

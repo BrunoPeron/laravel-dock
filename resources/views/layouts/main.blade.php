@@ -3,81 +3,66 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>@yield('title')</title>
     <!-- Fonte do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- CSS da aplicação -->
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbar">
+<header style="background-color:#000000; border-bottom-color: #272727">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#000000; ">
+        <div class="collapse navbar-collapse" id="navbar" style="background-color:#000000;">
             <a href="/" class="navbar-brand">
                 <img src="/img/ixc.png" alt="Ixc soft">
             </a>
             <ul class="navbar-nav">
                 @auth
                     <li class="nav-item">
-                        <a href="/encdec" class="nav-link">Decriptografar</a>
+                        <a href="/encdec" class="nav-link" >Decriptografar</a>
                     </li>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="javascript:;">
-                                <i class="material-icons">dashboard</i>
-                                <p class="d-lg-none d-md-block">
-                                    Stats
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">notifications</i>
-                                <span class="notification">5</span>
-                                <p class="d-lg-none d-md-block">
-                                    Some Actions
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                                <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                                <a class="dropdown-item" href="#">Another Notification</a>
-                                <a class="dropdown-item" href="#">Another One</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">person</i>
-                                <p class="d-lg-none d-md-block">
-                                    Account
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <li class="nav-item">
-                        <form action="/logout" method="POST">
-                            @csrf
-                            <a href="/logout"
-                               class="nav-link"
-                               onclick="event.preventDefault();
-                    this.closest('form').submit();">
-                                Sair
-                            </a>
-                        </form>
-                    </li>
+                    <div class="ml-3 relative" >
+                        <x-jet-dropdown align="right" width="48" style="background-color: #282828; color: #eaeaea">
+                            <x-slot name="trigger">
+                                <div style="padding-left: 20px; padding-right: 20px; background-color: #282828; border-radius: 15px; padding-top: 5px; padding-bottom: 5px; margin-top: 2px">
+                                    <span style="background-color: #282828; color: #eaeaea; ">
+                                        <button type="button" style="background-color: #282828; color: #eaeaea;">
+                                            {{ Auth::user()->name }}
+                                        </button>
+                                    </span>
+                                </div>
+                            </x-slot>
+                            <x-slot name="content">
+                                <div style="background-color: #1b5e20">
+                                <div class="block px-4 py-2 text-xs text-gray-400" style="background-color: #282828; color: #eaeaea; border-color: #272727">
+                                    {{ __('Manage Account') }}
+                                </div>
+                                <x-jet-dropdown-link href="{{ route('profile.show') }}" style="background-color: #282828; color: #eaeaea; border-color: #272727">
+                                    {{ __('Profile') }}
+                                </x-jet-dropdown-link>
+{{--                                <div class="border-t border-gray-100" style="border-bottom-color: #272727"></div>--}}
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();" style="background-color: #282828; color: #eaeaea; border-color: #272727">
+                                        {{ __('Log Out') }}
+                                    </x-jet-dropdown-link>
+                                </form>
+                                </div>
+                            </x-slot>
+                        </x-jet-dropdown>
+                    </div>
+                    {{--                    #fff--}}
                 @endauth
                 @guest
                     <li class="nav-item">
-                        <a href="/login" class="nav-link">Entrar</a>
+                        <a href="/login" class="nav-link" style="color: #b5b5b5">Entrar</a>
                     </li>
                 @endguest
             </ul>
@@ -97,8 +82,8 @@
         </div>
     </div>
 </main>
-<footer>
-    <p>IXC Soft &copy; 2021</p>
+<footer style="background-color: #000000;">
+    <p style="color: #ffffff">IXCSoft &copy; 2021</p>
 </footer>
 <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </body>

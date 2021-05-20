@@ -29,6 +29,14 @@ class LogsController extends Controller
         $checked['logs.data_consulta'] = "";
         $checked['logs.string_request'] = "";
         $checked['users.email'] = "";
+        $config = array(
+            "type" => "fs",
+            "settings" => array(
+                "location" => "/var/lib/elasticsearch_backup/",
+                "compress" => true
+            )
+        );
+
         return view('/logs/list', ['logs' => $logs, 'cargo' => $userLog->cargo, 'checked' => $checked]);
     }
 
