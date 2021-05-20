@@ -4,36 +4,69 @@
 
 @section('content')
     @if($cargo == 'admin')
-        <div class="card-body">
-            <div class="tab-content">
-                <div class="tab-pane active" id="profile">
-                    <table class="table">
-                        <tbody>
-                        @foreach($users as $user)
-                            <tr>
-                                {{--                        <td>--}}
-                                {{--                        </td>--}}
-                                <td>{{$user->name}}</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Edit Task" >
-                                        <a class="material-icons" href="/users/edit/{{ $user->id }}"><ion-icon name="create-outline"></ion-icon>edit</a>
-                                    </button>
-                                    <form action="/users/delete/{{ $user->id }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
-                                    </form>
-                                </td>
-                            </tr>
-
-                        @endforeach
-                        </tbody>
-                    </table>
-                    <a href="/users/create">Criar um usuario</a>
-                    <p1>{{$status ?? ''}}</p1>
-                </div>
+        <div style="background-color: #181818; padding: 35px; border-radius: 15px; margin-left: 20%; margin-top: 10%">
+            <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
+                <label>Gerenciar usuarios do sistema</label>
             </div>
+            <table class="table" style="border-radius: 15px;">
+                <thead class=" text-primary"  style="border-radius: 15px">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($users as $user)
+                    <tr>
+                        <td>
+                            {{$user->id}}
+                        </td>
+                        <td>
+                            {{$user->name}}
+                        </td>
+                        <td>
+                            {{$user->email}}
+                        </td>
+                        <td>
+                            <button type="button" rel="tooltip" title="" data-original-title="Edit Task" >
+                                <a class="btn btn-primary" href="/users/edit/{{ $user->id }}"><i class="bi bi-pencil-square"></i> Editar</a>
+                            </button>
+                        </td>
+                        <td>
+                            <form action="/users/delete/{{ $user->id }}" method="POST" style="width: 100px;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-trash-fill"></i> Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            <div class="row justify-content-center">
+                {{ $users->links() }}
+            </div>
+            <div class="row justify-content-end">
+                <a href="/users/create" class="btn btn-primary">Criar um usuario</a>
+            </div>
+
+
+            <p1>{{$status ?? ''}}</p1>
         </div>
     @endif
+
 
 @endsection

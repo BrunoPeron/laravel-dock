@@ -17,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', '!=', auth()->id())->get();
+        $user = User::where('id', '!=', auth()->id())->paginate(2);
         $userLog = User::where('id', '=', auth()->id())->first();
         return view('/users/list', ['users' => $user, 'cargo' => $userLog->cargo]);
     }

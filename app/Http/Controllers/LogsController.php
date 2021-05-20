@@ -23,19 +23,12 @@ class LogsController extends Controller
             ->leftJoin('users', 'users.id', '=', 'logs.id_user')
             ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
             ->orderBy('logs.id', 'desc')
-            ->paginate(3);
+            ->paginate(6);
 //            ->get();
         $checked['users.name'] = "checked";
         $checked['logs.data_consulta'] = "";
         $checked['logs.string_request'] = "";
         $checked['users.email'] = "";
-        $config = array(
-            "type" => "fs",
-            "settings" => array(
-                "location" => "/var/lib/elasticsearch_backup/",
-                "compress" => true
-            )
-        );
 
         return view('/logs/list', ['logs' => $logs, 'cargo' => $userLog->cargo, 'checked' => $checked]);
     }
@@ -53,7 +46,7 @@ class LogsController extends Controller
             ->leftJoin('users', 'users.id', '=', 'logs.id_user')
             ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
             ->orderBy('logs.id', 'desc')
-            ->paginate(3);
+            ->paginate(6);
 //            ->get();
         $checked['users.name'] = $request['type'] == 'users.name' ? 'users.name' : "";
         $checked['logs.data_consulta'] = $request['type'] == 'logs.data_consulta' ? : "";

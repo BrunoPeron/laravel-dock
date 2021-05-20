@@ -20,8 +20,6 @@ I
 public/assets/img/ixc.svg,d/7/d7ac57d02b0dcdff56e690c85b794b26fe193546
 A
 package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
-X
-(app/Http/Controllers/UsersController.php,e/f/ef37ff5edad2b115ffe7b9340d3ade43730bbbe6
 Q
 !resources/views/welcome.blade.php,0/c/0c96dd63e07fb2e889aeaea5cbabd89d0d09f1fb
 X
