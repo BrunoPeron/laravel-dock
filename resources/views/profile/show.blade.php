@@ -1,26 +1,17 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.main')
 
-    <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                @livewire('profile.update-profile-information-form')
+@section('title', 'Criar usuario')
 
-                <x-jet-section-border />
-            @endif
-
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.update-password-form')
-                </div>
-
-                <x-jet-section-border />
-            @endif
-
+@section('content')
+        <div class="row justify-content-center" style="background-color: #181818; border-radius: 15px; color: #ffffff">
+            <div class="row justify-content-center" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
+                <label>{{Auth::user()->cargo}}</label>
+            </div>
         </div>
-    </div>
-</x-app-layout>
+        <div class="row justify-content-center" style="background-color: #181818; border-radius: 15px; color: #ffffff">
+            <div class="row justify-content-md-center" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
+                <label>Gerenciar usuarios do sistema</label>
+            </div>
+        </div>
+
+@endsection
