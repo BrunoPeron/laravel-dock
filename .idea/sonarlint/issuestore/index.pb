@@ -12,8 +12,6 @@ o
 ?database/migrations/2021_05_17_013442_create_sessions_table.php,b/c/bc87ca9e2c6baa140b045e24be72615260d8b602
 C
 app/Models/Logs.php,7/a/7ac73d0e83aaab91e5f2f62a345c35609ae3b4ce
-V
-&resources/views/users/create.blade.php,9/3/9354144e2eb7fb88420128a07f528c22bafb7605
 ^
 .database/migrations/2021_05_17_132953_logs.php,9/d/9dafb1e940a1807f2860f5a6f8f949f793a52456
 I

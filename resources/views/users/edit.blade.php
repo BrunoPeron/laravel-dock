@@ -1,48 +1,25 @@
-{{--<div class="form-group">--}}
-{{--    <form class="form-signin" action="/users/post" method="POST">--}}
-{{--        @csrf--}}
-{{--        <input type="text" name="name" class="form-control" id="form-text" placeholder="name" required autofocus>--}}
-{{--            <span role="alert" class="error-msg" id="errormsg_0_Passwd"></span>--}}
-{{--        <input type="text" name="email" class="form-control" id="form-text" placeholder="email" required autofocus>--}}
-{{--            <span role="alert" class="error-msg" id="errormsg_0_Passwd"></span>--}}
-{{--        <input type="text" name="password" class="form-control" id="form-text" placeholder="password" required autofocus>--}}
-{{--            <span role="alert" class="error-msg" id="errormsg_0_Passwd"></span>--}}
-{{--        <span role="alert" class="error-msg" id="errormsg_0_Passwd"></span>--}}
-{{--        <input type="submit" value="Registrar usuario" class="btn btn-lg btn-primary btn-block" />--}}
-{{--        <span class="clearfix"></span>--}}
-{{--    </form>--}}
-{{--</div>--}}
-{{--@extends('layouts.main')--}}
-
-{{--@section('title', 'hdc')--}}
-
-{{--@section('content')--}}
-{{--    <td>{{$status ?? ''}}</td>--}}
-{{--    <p1>{{$msg ?? ''}}</p1>--}}
-
-{{--@endsection--}}
-
-
 @extends('layouts.main')
 
 @section('title', 'Criar usuario')
 
 @section('content')
 
-    <div id="event-create-container" class="col-md-6 offset-md-3">
-        <h1>Criar usuario</h1>
+    <div id="event-create-container" class="col-md-6 offset-md-3" style="background-color: #181818; border-radius: 15px; margin-top: 10%    ">
+        <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
+            <label>Editar usuario</label>
+        </div>
         <form action="/users/edit/{{$user->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="form-group">
+            <div class="form-group" style="color: #b3b3b3;" >
                 <label for="title">Nome do usuario:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Nome de usuario" value="{{$user->name}}" required autofocus>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="color: #b3b3b3;">
                 <label for="title">Email:</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{$user->email}}">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="color: #b3b3b3;">
                 <label for="title">Senha:</label>
                 <input type="password" class="form-control" id="password" name="password" value="" placeholder="Senha">
             </div>
