@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -57,8 +58,6 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-
-
         return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');
     }
 
@@ -95,17 +94,24 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
-        $user = User::where('email', '=', $request->email)->first();
+        if (isset($request['password'])){
+            $user = User::where('email', '=', $request->email)->first();
 //        if ($user != null) {
 //            return redirect('/users/edit/'.$request->id)->with('msg-alert', 'Email ja cadastrado');
 //        }
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $var = ['name' => $request->name, 'email' => $user->email, 'password' => Hash::make($request->password)];
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request['password']);
+            $var = ['name' => $request->name, 'email' => $user->email, 'password' => Hash::make($request['password'])];
 
-        User::findOrFail($request->id)->update($var);
-        return redirect('/users/list')->with('msg', 'Usuario editado com sucesso');
+            User::findOrFail($request->id)->update($var);
+            return redirect('/users/list')->with('msg', 'Usuario editado com sucesso');
+        } else {
+            $var = ['password' => Hash::make($request['passwordA'])];
+            User::findOrFail($request->id)->update($var);
+            return redirect('/user/profile')->with('msg', 'Senha alterada com sucesso');
+        }
+
 
     }
 

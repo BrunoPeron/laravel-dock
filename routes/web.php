@@ -16,38 +16,41 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\LogsController;
 
 
-//Route::get('/', function () {
-//    return view('dashboard');
-//})->middleware('auth');
 
 Route::get('/', function () {
     $cargo = UsersController::getcargo();
     return view('dashboard', ['cargo' => $cargo]);
 })->middleware('auth');
 
+Route::get('/register', function (){
+    return redirect('/');
+})->middleware('auth');
+
+Route::get('/reset-password', function (){
+    return redirect('/');
+})->middleware('auth');
 
 
 Route::get('/users/create', [UsersController::class, 'create'])->middleware('auth');
 Route::get('/users/post', [UsersController::class, 'create'])->middleware('auth');
 Route::post('/users/post', [UsersController::class, 'store'])->middleware('auth');
-//Route::get('/users/remove/{id}', [UsersController::class, 'destroy']);
 Route::delete('/users/delete/{id}', [UsersController::class, 'destroy'])->middleware('auth');
 Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->middleware('auth');
 Route::get('/users/list', [UsersController::class, 'index'])->middleware('auth');
 Route::put('/users/edit/{id}', [UsersController::class, 'update'])->middleware('auth');
 
 
-Route::get('/encdec', [LogsController::class, 'create'])->middleware('auth');
-Route::get('/encdec/post', [LogsController::class, 'create'])->middleware('auth');
-Route::post('/encdec/post', [LogsController::class, 'store'])->middleware('auth');
 Route::get('/logs/list', [LogsController::class, 'index'])->middleware('auth');
 Route::get('/logs/list/search', function (){
     $busca['text'] = request('text');
     $busca['type'] = request('type');
-//    $busca['page'] = request('page');
     $logController = new LogsController();
     return $logController->consulta($busca);
 })->middleware('auth');
+
+Route::get('/encdec', [LogsController::class, 'create'])->middleware('auth');
+Route::get('/encdec/post', [LogsController::class, 'create'])->middleware('auth');
+Route::post('/encdec/post', [LogsController::class, 'store'])->middleware('auth');
 
 Route::get('/encdec_elastic', [LogsController::class, 'create_elastic'])->middleware('auth');
 Route::get('/encdec_elastic/post', [LogsController::class, 'create_elastic'])->middleware('auth');
