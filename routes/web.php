@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('dashboard', ['cargo' => $cargo]);
 })->middleware('auth');
 
+Route::get('/dashboard', function (){
+    return redirect('/');
+})->middleware('auth');
+
 Route::get('/register', function (){
     return redirect('/');
 })->middleware('auth');
@@ -30,6 +34,21 @@ Route::get('/reset-password', function (){
     return redirect('/');
 })->middleware('auth');
 
+Route::get('/two-factor-challenge', function (){
+    return redirect('/');
+})->middleware('auth');
+
+Route::get('/verify-email', function (){
+    return redirect('/');
+})->middleware('auth');
+
+Route::get('/confirm-password', function (){
+    return redirect('/');
+})->middleware('auth');
+
+Route::get('/forgot-password', function (){
+    return redirect('/');
+})->middleware('auth');
 
 Route::get('/users/create', [UsersController::class, 'create'])->middleware('auth');
 Route::get('/users/post', [UsersController::class, 'create'])->middleware('auth');

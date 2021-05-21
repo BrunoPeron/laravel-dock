@@ -10,8 +10,6 @@ N
 resources/views/temp.blade.php,a/d/ad31b2b3281d01f33d12aa2866a1c0a3cbd696b2
 o
 ?database/migrations/2021_05_17_013442_create_sessions_table.php,b/c/bc87ca9e2c6baa140b045e24be72615260d8b602
-C
-app/Models/Logs.php,7/a/7ac73d0e83aaab91e5f2f62a345c35609ae3b4ce
 ^
 .database/migrations/2021_05_17_132953_logs.php,9/d/9dafb1e940a1807f2860f5a6f8f949f793a52456
 I

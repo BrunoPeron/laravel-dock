@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Jetstream\Jetstream;
@@ -94,7 +95,17 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
-        if (isset($request['password'])){
+        if (isset($request['passwordA'])){
+            if (!Hash::check($request['passwordA'], Auth::user()->getAuthPassword())){
+                return redirect('/user/profile')->with('status', 'A senha é diferente da atual');
+            } else if ($request['novaSenha'] !== $request['novaRSenha']){
+                return redirect('/user/profile')->with('status', 'As senha nao coincidem');
+            } else {
+                $var = ['password' => Hash::make($request['novaSenha'])];
+                User::findOrFail($request->id)->update($var);
+                return redirect('/user/profile')->with('msg', 'Senha alterada com sucesso');
+            }
+        } else {
             $user = User::where('email', '=', $request->email)->first();
 //        if ($user != null) {
 //            return redirect('/users/edit/'.$request->id)->with('msg-alert', 'Email ja cadastrado');
@@ -106,13 +117,7 @@ class UsersController extends Controller
 
             User::findOrFail($request->id)->update($var);
             return redirect('/users/list')->with('msg', 'Usuario editado com sucesso');
-        } else {
-            $var = ['password' => Hash::make($request['passwordA'])];
-            User::findOrFail($request->id)->update($var);
-            return redirect('/user/profile')->with('msg', 'Senha alterada com sucesso');
         }
-
-
     }
 
     /**

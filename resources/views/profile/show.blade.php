@@ -12,11 +12,11 @@
                 <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px">
                     <label>Informacoes de usuario</label>
                 </div>
-                <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 35px">
+                <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 20px">
                     <label>Nome de usuario</label>
                     <input class="form-control" id="disabledInput" type="text" placeholder="{{Auth::user()->name}}" disabled="">
                 </div>
-                <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 35px; margin-top: 15px; margin-bottom: 20px">
+                <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 20px; margin-top: 15px; margin-bottom: 20px">
                     <label>Email do usuario</label>
                     <input class="form-control" id="disabledInput" type="text" placeholder="{{Auth::user()->email}}" disabled="">
                 </div>
@@ -33,16 +33,31 @@
                 <form action="/users/edit/{{$user->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 35px">
-                        <label>Senha</label>
-                        <input class="form-control" id="passwordA"  name="passwordA" type="password" placeholder="" >
+                    <x-jet-validation-errors class="mb-4" />
+                    @if (session('status'))
+                        <div class="mb-4 font-medium text-sm text-red-600">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 20px">
+                        <label>Senha atual</label>
+                        <input class="form-control" id="passwordA"  name="passwordA" type="password" placeholder="Digite a sua senha atual..." required>
                     </div>
-                    <div class="row justify-content-end" style="padding-left:200px; color: #b3b3b3;">
+                    <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 20px">
+                        <label>Senha</label>
+                        <input class="form-control" id="novaSenha"  name="novaSenha" type="password" placeholder="Digite a nova senha" required>
+                    </div>
+                    <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 20px">
+                        <label>Redigite a senha</label>
+                        <input class="form-control" id="novaRSenha"  name="novaRSenha" type="password" placeholder="Confirme a senha" required>
+                    </div>
+                    <div class="row justify-content-end" style="padding-left:200px; color: #b3b3b3; margin-top: 25px">
                         <input type="submit" class="btn btn-primary" value="Confirmar">
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 
 @endsection

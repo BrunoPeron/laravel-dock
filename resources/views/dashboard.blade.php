@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    @if($cargo == 'admin' && !empty($cargo))
+    @if(Auth::user()->cargo == 'admin')
         <div class="row justify-content-start" style="margin-top: 80px; padding-top:10px; margin-left: 20%; background-color: #181818; padding-right: 40px; padding-bottom: 25px; border-radius: 10px;">
             <div class="col" style="padding-top:10px;">
                 <i class="bi bi-person-plus-fill" style="font-size: 90px; color: #ffffff;"></i>
