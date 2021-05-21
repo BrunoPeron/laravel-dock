@@ -261,6 +261,11 @@ footer p {
     color: #ffffff;
 }
 
+.table-borderless{
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+}
 
-tr:nth-child(even){ background: #3e3e3e; color: #ffffff; border-radius: 15px}
-tr:nth-child(odd){ background: #282828; color: #ffffff; border-radius: 15px}
+/*tr:nth-child(even){ background: #3e3e3e; color: #ffffff; border-radius: 15px}*/
+/*tr:nth-child(odd){ background: #282828; color: #ffffff; border-radius: 15px}*/

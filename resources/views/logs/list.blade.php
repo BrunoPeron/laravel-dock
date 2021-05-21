@@ -3,7 +3,7 @@
 @section('title', 'Ixcsoft')
 
 @section('content')
-    @if($cargo == 'admin')
+    @if(Auth::user()->cargo == 'admin')
     <div class="row" style="margin-left: auto; margin-right: auto; width: 75%; color: #ffffff; margin-top: 8%">
         <div class="col-md-12" >
             <div class="card" style="background-color: #181818; border-radius: 15px; color: #ffffff;">
@@ -26,8 +26,8 @@
                             <input type="radio"  name="type" value="logs.string_request" {{$checked['logs.string_request']}}> Senha decriptografada
                             <input type="radio"  name="type" value="users.email" {{$checked['users.email']}}> Email
                         </div>
-                        <div class="btn btn-primary" style="width: 160px; height: 40px;">
-                        <a href="/logs/list" style="color: #ffffff">Limpar consulta</a>
+                        <div class="btn btn-primary" style="width: 160px; height: 40px; margin-top: 20px">
+                            <a href="/logs/list" style="color: #ffffff">Limpar consulta</a>
                         </div>
                     </div>
                     <div class="card-body"  style="border-radius: 15px">
@@ -81,7 +81,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     @endif
 @endsection

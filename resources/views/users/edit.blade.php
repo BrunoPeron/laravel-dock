@@ -11,6 +11,11 @@
         <form action="/users/edit/{{$user->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            @if (session('status'))
+                <div class="mb-4 font-medium text-sm text-red-600">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="form-group" style="color: #b3b3b3;" >
                 <label for="title">Nome do usuario:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Nome de usuario" value="{{$user->name}}" required autofocus>
@@ -23,15 +28,15 @@
                 <label for="title">Senha:</label>
                 <input type="password" class="form-control" id="password" name="password" value="" placeholder="Senha">
             </div>
-            {{--            <div class="form-group">--}}
-            {{--                <label for="title">Permissão do usuario</label>--}}
-            {{--                <div class="form-group">--}}
-            {{--                    <input type="checkbox" name="items[]" value="Cadeiras"> Administrador--}}
-            {{--                </div>--}}
-            {{--                <div class="form-group">--}}
-            {{--                    <input type="checkbox" name="items[]" value="Palco"> Usuario--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
+            <div class="form-group">
+                <label for="title" style="color: #b3b3b3;">Permissão do usuario</label>
+                <div class="form-group" style="color: #b3b3b3;">
+                    <input type="radio"  name="cargo" value="user" style="margin-right: 10px" {{$checked['user']}}>  Usuario
+                </div>
+                <div class="form-group" style="color: #b3b3b3;">
+                    <input type="radio"  name="cargo" value="admin" style="margin-right: 10px" {{$checked['admin']}}>  Administrador
+                </div>
+            </div>
             <input type="submit" class="btn btn-primary" value="Confirmar">
         </form>
     </div>

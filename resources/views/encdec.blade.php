@@ -13,9 +13,11 @@
                     <input type="text" class="form-control" id="string_request" name="string_request" placeholder="Senha encriptada" required autofocus>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Decriptografar" style="margin-top: 25px">
-                @if(!empty(session('resposta')))
-                    <h2>{{session('resposta')}}</h2>
-                @endif
             </form>
+                @if(!empty(session('resposta')))
+                    <div class="row justify-content-left" style="padding-top:10px; color: #ffffff;  font-size: 35px">
+                        <label>{{session('resposta')}}</label>
+                    </div>
+                @endif
         </div>
 @endsection

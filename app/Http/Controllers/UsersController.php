@@ -19,7 +19,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', '!=', auth()->id())->paginate(2);
+        $user = User::where('id', '!=', auth()->id())->paginate(5);
         $userLog = User::where('id', '=', auth()->id())->first();
         return view('/users/list', ['users' => $user, 'cargo' => $userLog->cargo]);
     }
@@ -57,6 +57,7 @@ class UsersController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->cargo = $request->cargo;
         $user->password = Hash::make($request->password);
         $user->save();
         return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');
@@ -83,7 +84,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users/edit', ['user' => $user]);
+        $checked['admin'] = $user['cargo'] == 'admin' ? "checked": "";
+        $checked['user'] = $user['cargo'] == 'user' ? "checked": "";
+        return view('users/edit', ['user' => $user, 'checked' => $checked]);
     }
 
     /**
@@ -95,6 +98,7 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
+
         if (isset($request['passwordA'])){
             if (!Hash::check($request['passwordA'], Auth::user()->getAuthPassword())){
                 return redirect('/user/profile')->with('status', 'A senha é diferente da atual');
@@ -106,14 +110,16 @@ class UsersController extends Controller
                 return redirect('/user/profile')->with('msg', 'Senha alterada com sucesso');
             }
         } else {
-            $user = User::where('email', '=', $request->email)->first();
-//        if ($user != null) {
-//            return redirect('/users/edit/'.$request->id)->with('msg-alert', 'Email ja cadastrado');
-//        }
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request['password']);
-            $var = ['name' => $request->name, 'email' => $user->email, 'password' => Hash::make($request['password'])];
+            if (Auth::user()->cargo != 'admin'){
+                return redirect('/');
+            }
+            $user = User::where('id', '=', $request->id)->first();
+            $usercheck = User::where('email', '=', $request->email)->where('id', '!=', $request->id)->first();
+
+            if (isset($usercheck->id)){
+                return redirect('/users/edit/'.$request->id)->with('status', 'Email ja cadastrado');
+            }
+            $var = ['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request['password']), 'cargo' => $request->cargo];
 
             User::findOrFail($request->id)->update($var);
             return redirect('/users/list')->with('msg', 'Usuario editado com sucesso');

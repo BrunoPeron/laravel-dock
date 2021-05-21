@@ -23,15 +23,15 @@
                 <label for="title">Senha:</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
             </div>
-{{--            <div class="form-group">--}}
-{{--                <label for="title">Permissão do usuario</label>--}}
-{{--                <div class="form-group">--}}
-{{--                    <input type="checkbox" name="items[]" value="Cadeiras"> Administrador--}}
-{{--                </div>--}}
-{{--                <div class="form-group">--}}
-{{--                    <input type="checkbox" name="items[]" value="Palco"> Usuario--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="form-group">
+                <label for="title" style="color: #b3b3b3;">Permissão do usuario</label>
+                <div class="form-group" style="color: #b3b3b3;">
+                    <input type="radio"  name="cargo" value="user" style="margin-right: 10px" checked>  Usuario
+                </div>
+                <div class="form-group" style="color: #b3b3b3;">
+                    <input type="radio"  name="cargo" value="admin" style="margin-right: 10px">  Administrador
+                </div>
+            </div>
             <input type="submit" class="btn btn-primary" value="Criar Usuario">
         </form>
     </div>
