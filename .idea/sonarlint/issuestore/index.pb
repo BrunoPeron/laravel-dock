@@ -16,10 +16,6 @@ I
 public/assets/img/ixc.svg,d/7/d7ac57d02b0dcdff56e690c85b794b26fe193546
 A
 package-lock.json,f/a/fa288d1472d29beccb489a676f68739ad365fc47
-Q
-!resources/views/welcome.blade.php,0/c/0c96dd63e07fb2e889aeaea5cbabd89d0d09f1fb
-X
-(resources/views/encdec_elastic.blade.php,b/0/b0cf4cc7332e1ef9edd3fb897a2cfb039e949717
 t
 Dstorage/framework/views/eb79f537b6f4e65fe94dd8f57fcfb2c20c4962f9.php,0/2/0206b7e58dcac8aab295b46f9184cac7bdb91bdf
 G
@@ -50,16 +46,10 @@ c
 3resources/views/auth/two-factor-challenge.blade.php,7/3/73c67675cf39f67e357b12e8968710c17feb6e7f
 X
 (public/assets/css/material-dashboard.css,6/f/6f8dca7d6c569707f0f87718b5be781b9bb438cb
-C
-app/Models/Logs.php,7/a/7ac73d0e83aaab91e5f2f62a345c35609ae3b4ce
 Z
 *app/Actions/Fortify/UpdateUserPassword.php,c/a/ca4fa913b449bd4f49dc498f3e27cbb40f05de37
-V
-&resources/views/layouts/main.blade.php,f/b/fb14c907e8cff96ef8d6a6fceefa029c85dc9a40
 f
 6resources/views/profile/update-password-form.blade.php,9/5/957e91fbe2a1e768511662275d0672ad61720e51
->
-routes/web.php,6/b/6b9a783d9b43fee50fd28f56dbd1856d2608f305
 t
 Dstorage/framework/views/406296017918bffe7aa41288b825d25534858794.php,4/3/43676441492bf56999759c4f1b80ea29f6aeb2a4
 J
@@ -70,7 +60,3 @@ Apublic/assets/scss/material-dashboard/bootstrap/scss/_tables.scss,a/c/acbe3ad3
 Kpublic/assets/scss/material-dashboard/bootstrap/scss/mixins/_table-row.scss,0/5/05d81b7a69832d521421e362975fb829dd8b7653
 V
 &resources/views/profile/show.blade.php,3/1/3137ec0a77200811303a0051203f489685d88c63
-T
-$resources/views/auth/login.blade.php,f/b/fb3cbd7f4b7fd6fa26794a37d7b2f8f783688ff9
-T
-$resources/views/users/list.blade.php,0/9/098a03ae0a83f502ce12f4fd5dd420cb8b53ee6b

@@ -12,7 +12,7 @@
                     <form action="/logs/list/search" method="GET" enctype="multipart/form-data">
                     <div class="input-group no-border" style="width: 50%;">
                         <input type="text" value="" class="form-control" placeholder="Search..." style="border-radius: 10px" name="text">
-                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <button type="submit" class="btn btn-primary" style="width: 42px; border-radius: 15px">
                             <i class="bi bi-search" style="color:#ffffff;"></i>
                             <div class="ripple-container">
                             </div>

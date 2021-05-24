@@ -8,6 +8,16 @@
         <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
             <label>Editar usuario</label>
         </div>
+        @if(session('msg-alert'))
+            <div class="mb-2 font-medium text-sm text-red-600">
+                {{ session('msg-alert') }}
+            </div>
+        @endif
+        @if(session('msg-sucess'))
+            <div class="mb-2 font-medium text-sm text-green-600">
+                {{ session('msg-sucess') }}
+            </div>
+        @endif
         <form action="/users/edit/{{$user->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')

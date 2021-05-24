@@ -9,6 +9,16 @@
         <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
             <label>Criar usuario</label>
         </div>
+        @if(session('msg-alert'))
+            <div class="mb-2 font-medium text-sm text-red-600">
+                {{ session('msg-alert') }}
+            </div>
+        @endif
+        @if(session('msg-sucess'))
+            <div class="mb-2 font-medium text-sm text-green-600">
+                {{ session('msg-sucess') }}
+            </div>
+        @endif
         <form action="/users/post" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group" style="color: #b3b3b3;" >

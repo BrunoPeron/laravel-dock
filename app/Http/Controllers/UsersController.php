@@ -37,7 +37,6 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $userLog = User::where('id', '=', auth()->id())->first();
         return view('users.create');
     }
 

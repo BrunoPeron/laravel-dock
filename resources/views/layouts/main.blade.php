@@ -8,13 +8,14 @@
     <!-- Fonte do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <!-- CSS da aplicação -->
     <link rel="stylesheet" href="/css/styles.css">
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<body>
+<body style="background-color: #121212">
 <header style="background-color:#000000; border-bottom-color: #272727">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#000000; ">
         <div class="collapse navbar-collapse" id="navbar" style="background-color:#000000;">
@@ -39,21 +40,21 @@
                             </x-slot>
                             <x-slot name="content">
                                 <div style="background-color: #1b5e20">
-                                <div class="block px-4 py-2 text-xs text-gray-400" style="background-color: #282828; color: #eaeaea; border-color: #272727">
-                                    {{ __('Manage Account') }}
-                                </div>
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}" style="background-color: #282828; color: #eaeaea; border-color: #272727">
-                                    {{ __('Profile') }}
-                                </x-jet-dropdown-link>
-{{--                                <div class="border-t border-gray-100" style="border-bottom-color: #272727"></div>--}}
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-jet-dropdown-link href="{{ route('logout') }}"
-                                                         onclick="event.preventDefault();
-                                                this.closest('form').submit();" style="background-color: #282828; color: #eaeaea; border-color: #272727">
-                                        {{ __('Log Out') }}
+                                    <div class="block px-4 py-2 text-xs text-gray-400" style="background-color: #282828; color: #eaeaea; border-color: #272727">
+                                        {{ __('Manage Account') }}
+                                    </div>
+                                    <x-jet-dropdown-link href="{{ route('profile.show') }}" style="background-color: #282828; color: #eaeaea; border-color: #272727">
+                                        {{ __('Profile') }}
                                     </x-jet-dropdown-link>
-                                </form>
+                                    {{--                                <div class="border-t border-gray-100" style="border-bottom-color: #272727"></div>--}}
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                                             onclick="event.preventDefault();
+                                                this.closest('form').submit();" style="background-color: #282828; color: #eaeaea; border-color: #272727">
+                                            {{ __('Log Out') }}
+                                        </x-jet-dropdown-link>
+                                    </form>
                                 </div>
                             </x-slot>
                         </x-jet-dropdown>
@@ -72,12 +73,15 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            @if(session('msg-alert'))
-                <p class="msg">{{session('msg-alert')}}</p>
-            @endif
-            @if(session('msg-sucess'))
-                <p class="msg">{{session('msg-sucess')}}</p>
-            @endif
+            {{--            @if(session('msg-alert'))--}}
+            {{--                <p class="msg">{{session('msg-alert')}}</p>--}}
+            {{--                <div class="mb-2 font-medium text-sm text-green-600">--}}
+            {{--                    {{ session('msg-alert') }}--}}
+            {{--                </div>--}}
+            {{--            @endif--}}
+            {{--            @if(session('msg-sucess'))--}}
+            {{--                <p class="msg">{{session('msg-sucess')}}</p>--}}
+            {{--            @endif--}}
             @yield('content')
         </div>
     </div>

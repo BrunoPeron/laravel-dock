@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logs;
 use App\Models\User;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,13 +42,29 @@ class LogsController extends Controller
     public function consulta($request = null){
         $userLog = User::where('id', '=', auth()->id())->first();
         $valor = $request['type'] == 'logs.string_request' ? md5($request['text']) : $request['text'];
-        $logs = DB::table('logs')
-            ->where($request['type'], '=', $valor)
-            ->leftJoin('users', 'users.id', '=', 'logs.id_user')
-            ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
-            ->orderBy('logs.id', 'desc')
-            ->paginate(6);
-//            ->get();
+        if ($request['type'] == 'logs.data_consulta'){
+            $data = preg_split("/-|\//", $valor);
+            $data = "{$data[2]}-{$data[1]}-{$data[0]}";
+            $dataini = "{$data} 00:00:00";
+            $datafin = "{$data} 23:59:59";
+            $logs = DB::table('logs')
+                ->where($request['type'], '>=', $dataini)
+                ->where($request['type'], '<=', $datafin)
+                ->leftJoin('users', 'users.id', '=', 'logs.id_user')
+                ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
+                ->orderBy('logs.id', 'desc')
+                ->paginate(6);
+        } else {
+            $logs = DB::table('logs')
+                ->where($request['type'], '=', $valor)
+                ->leftJoin('users', 'users.id', '=', 'logs.id_user')
+                ->select('users.name', 'users.email', 'logs.data_consulta', 'logs.string_request', 'logs.id')
+                ->orderBy('logs.id', 'desc')
+                ->paginate(6);
+        }
+
+
+
         $checked['users.name'] = $request['type'] == 'users.name' ? 'users.name' : "";
         $checked['logs.data_consulta'] = $request['type'] == 'logs.data_consulta' ? : "";
         $checked['logs.string_request'] = $request['type'] == 'logs.string_request' ? : "";
