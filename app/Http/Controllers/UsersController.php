@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Laravel\Jetstream\Jetstream;
 
 class UsersController extends Controller
 {
@@ -48,18 +45,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::where('email', '=', $request->email)->first();
-        if ($user != null) {
-            return redirect('/users/create')->with('msg-alert', 'Email ja cadastrado');
-        }
+        if (Auth::user()->cargo == 'admin'){
+            $user = User::where('email', '=', $request->email)->first();
+            if ($user != null) {
+                return redirect('/users/create')->with('msg-alert', 'Email ja cadastrado');
+            }
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->cargo = $request->cargo;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->cargo = $request->cargo;
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');
+        }
     }
 
 
@@ -97,7 +96,6 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
-
         if (isset($request['passwordA'])){
             if (!Hash::check($request['passwordA'], Auth::user()->getAuthPassword())){
                 return redirect('/user/profile')->with('status', 'A senha é diferente da atual');
@@ -112,7 +110,6 @@ class UsersController extends Controller
             if (Auth::user()->cargo != 'admin'){
                 return redirect('/');
             }
-            $user = User::where('id', '=', $request->id)->first();
             $usercheck = User::where('email', '=', $request->email)->where('id', '!=', $request->id)->first();
 
             if (isset($usercheck->id)){
@@ -134,9 +131,6 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-//        User::destroy($id);
-//        $user = User::where('id', '!=', auth()->id())->get();
-//        return view('/users/list', ['users' => $user, 'status' => 'Apagado com sucesso']);
         return redirect('/users/list')->with(['msg' => 'apagado']);
     }
 }

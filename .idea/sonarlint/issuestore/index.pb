@@ -10,8 +10,6 @@ N
 resources/views/temp.blade.php,a/d/ad31b2b3281d01f33d12aa2866a1c0a3cbd696b2
 o
 ?database/migrations/2021_05_17_013442_create_sessions_table.php,b/c/bc87ca9e2c6baa140b045e24be72615260d8b602
-^
-.database/migrations/2021_05_17_132953_logs.php,9/d/9dafb1e940a1807f2860f5a6f8f949f793a52456
 I
 public/assets/img/ixc.svg,d/7/d7ac57d02b0dcdff56e690c85b794b26fe193546
 A
@@ -20,8 +18,6 @@ t
 Dstorage/framework/views/eb79f537b6f4e65fe94dd8f57fcfb2c20c4962f9.php,0/2/0206b7e58dcac8aab295b46f9184cac7bdb91bdf
 G
 public/img/iconecad.svg,2/4/246c4ee88c5135b220641887c195e822129db0c2
-Y
-)resources/views/navigation-menu.blade.php,0/c/0cdc545deda3932fd2f6a0e0e277487872f39ea6
 
 Opublic/assets/scss/material-dashboard/bootstrap/scss/mixins/_border-radius.scss,6/d/6d10b470b518e5e422dd238b53297b2ba53d87ce
 t
@@ -38,8 +34,6 @@ Aresources/views/profile/update-profile-information-form.blade.php,2/f/2f4ebea3
 composer.json,3/9/3957b91a0d8450cea0115cfd5af69eac90d75897
 ]
 -resources/views/auth/reset-password.blade.php,1/0/109b1959bcca16cfc6f020c2c5683d4d79a4f797
-V
-&resources/views/admin_layout.blade.php,0/7/076e5c27766f4e12080c24d7956520e15c249776
 W
 'resources/views/auth/register.blade.php,8/6/8600e63b1d771a3b86abef40d1ef23e1ffb21feb
 c

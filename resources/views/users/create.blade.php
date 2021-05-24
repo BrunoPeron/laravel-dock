@@ -4,8 +4,7 @@
 @section('title', 'Criar usuario')
 
 @section('content')
-
-    <div id="event-create-container" class="col-md-6 offset-md-3" style="background-color: #181818; border-radius: 15px; margin-top: 10%    ">
+    <div id="event-create-container" class="col-md-6 offset-md-3" style="background-color: #181818; border-radius: 15px; margin-top: 20px    ">
         <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
             <label>Criar usuario</label>
         </div>
@@ -45,5 +44,4 @@
             <input type="submit" class="btn btn-primary" value="Criar Usuario">
         </form>
     </div>
-
 @endsection

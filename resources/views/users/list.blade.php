@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'hdc')
+@section('title', 'Lista de usuarios')
 
 @section('content')
     @if($cargo == 'admin')
         <div class="container px-5 text-center">
-            <div class="row" style="background-color: #181818; padding: 35px; border-radius: 15px; margin-top: 100px">
+            <div class="row" style="background-color: #181818; padding: 35px; border-radius: 15px; margin-top: 20px">
                 <div class="col-md-12">
                     <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
                         <label>Gerenciar usuarios do sistema</label>

@@ -17,7 +17,6 @@ class Logs extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users');
             $table->dateTime('data_consulta');
             $table->string('string_request');
         });
