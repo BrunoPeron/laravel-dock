@@ -4,7 +4,7 @@
 
 @section('content')
     @if(Auth::user()->cargo == 'admin')
-    <div class="row" style="margin-left: auto; margin-right: auto; width: 75%; color: #ffffff; margin-top: 8%">
+    <div class="row" style="margin-left: auto; margin-right: auto; width: 75%; color: #ffffff; margin-top: 50px">
         <div class="col-md-12" >
             <div class="card" style="background-color: #181818; border-radius: 15px; color: #ffffff;">
                 <div class="card-header card-header-primary" >

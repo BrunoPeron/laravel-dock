@@ -58,5 +58,3 @@ q
 Apublic/assets/scss/material-dashboard/bootstrap/scss/_tables.scss,a/c/acbe3ad373a7010818876eeb49d513e347fa934b
 {
 Kpublic/assets/scss/material-dashboard/bootstrap/scss/mixins/_table-row.scss,0/5/05d81b7a69832d521421e362975fb829dd8b7653
-V
-&resources/views/profile/show.blade.php,3/1/3137ec0a77200811303a0051203f489685d88c63

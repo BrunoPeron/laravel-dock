@@ -8,7 +8,6 @@
     <!-- Fonte do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
     <!-- CSS Bootstrap -->
-
     <!-- CSS da aplicação -->
     <link rel="stylesheet" href="/css/styles.css">
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -24,9 +23,6 @@
             </a>
             <ul class="navbar-nav">
                 @auth
-                    <li class="nav-item">
-                        <a href="/encdec" class="nav-link" >Decriptografar</a>
-                    </li>
                     <div class="ml-3 relative" >
                         <x-jet-dropdown align="right" width="48" style="background-color: #282828; color: #eaeaea">
                             <x-slot name="trigger">
@@ -89,6 +85,5 @@
 <footer style="background-color: #000000;">
     <p style="color: #ffffff">IXCSoft &copy; 2021</p>
 </footer>
-<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </body>
 </html>
