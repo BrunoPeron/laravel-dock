@@ -6,8 +6,6 @@ B
 docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
 4
 .env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
-N
-resources/views/temp.blade.php,a/d/ad31b2b3281d01f33d12aa2866a1c0a3cbd696b2
 o
 ?database/migrations/2021_05_17_013442_create_sessions_table.php,b/c/bc87ca9e2c6baa140b045e24be72615260d8b602
 I
@@ -52,3 +50,5 @@ q
 Apublic/assets/scss/material-dashboard/bootstrap/scss/_tables.scss,a/c/acbe3ad373a7010818876eeb49d513e347fa934b
 {
 Kpublic/assets/scss/material-dashboard/bootstrap/scss/mixins/_table-row.scss,0/5/05d81b7a69832d521421e362975fb829dd8b7653
+T
+$resources/views/users/edit.blade.php,8/e/8ece776971e3b2f05c17e0bcb278c3066385d29c

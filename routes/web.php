@@ -71,9 +71,9 @@ Route::get('/encdec', [LogsController::class, 'create'])->middleware('auth');
 Route::get('/encdec/post', [LogsController::class, 'create'])->middleware('auth');
 Route::post('/encdec/post', [LogsController::class, 'store'])->middleware('auth');
 
-Route::get('/encdec_elastic', [LogsController::class, 'create_elastic'])->middleware('auth');
-Route::get('/encdec_elastic/post', [LogsController::class, 'create_elastic'])->middleware('auth');
-Route::post('/encdec_elastic/post', [LogsController::class, 'store_elastic'])->middleware('auth');
+Route::get('/encdecelastic', [LogsController::class, 'createelastic'])->middleware('auth');
+Route::get('/encdecelastic/post', [LogsController::class, 'createelastic'])->middleware('auth');
+Route::post('/encdecelastic/post', [LogsController::class, 'storeelastic'])->middleware('auth');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

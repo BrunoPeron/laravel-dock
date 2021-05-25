@@ -16,15 +16,13 @@
                         <div class="row" style="padding-top:10px; color: #ffffff; font-size: 35px">
                             <label>Login de usuario</label>
                         </div>
-
                         <form method="POST" action="{{ route('login') }}" style="background-color: #181818; color: #ffffff">
                             <div class="row justify-content-left">
-                            <x-jet-validation-errors class="mb-4" />
+                            <x-jet-validation-errors class="mb-4"/>
                                 @if (session('status'))
                                     <div class="mb-2 font-medium text-sm text-green-600">
                                         {{ session('status') }}
                                     </div>
-
                                 @endif
                             </div>
                             <div class="row justify-content-left" style=" color: #b3b3b3; font-size: 20px">

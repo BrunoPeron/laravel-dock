@@ -3,7 +3,7 @@
 @section('title', 'Ixcsoft')
 
 @section('content')
-    <div class="col-md-4 offset-md-1">
+    <div class="col-md-4 offset-md-1" style="margin-top: 40px">
         <div class="row" style="padding-top:10px;  background-color: #181818; padding-bottom: 25px; border-radius: 10px; margin-top: 20px">
             <div class="col-md-3 offset-md-1" style="margin-left: 3%">
                 <div style="padding-top:10px;">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-md-2" style="margin-top: 40px">
         <div class="row" style="padding-top:10px;  background-color: #181818; padding-bottom: 25px; border-radius: 10px; margin-top: 20px">
             <div class="col-md-3 offset-md-1" style="margin-left: 3%">
                 <div style="padding-top:10px;">
@@ -41,14 +41,14 @@
                         <label>Decifra a senha do ElasticSearch</label>
                     </div>
                     <div class="row justify-content-end" style="padding-left:200px; color: #ffffff;">
-                        <a href="/encdec_elastic" class="btn btn-primary"  style="margin-top: 25px">Prosseguir</a>
+                        <a href="/encdecelastic" class="btn btn-primary"  style="margin-top: 25px">Prosseguir</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     @if(Auth::user()->cargo == 'admin')
-        <div class="col-md-4 offset-md-1">
+        <div class="col-md-4 offset-md-1" >
             <div class="row" style="margin-top: 80px; padding-top:10px;  background-color: #181818; padding-bottom: 25px; border-radius: 10px;">
                 <div class="col-md-3 offset-md-1" style="margin-left: 3%">
                     <div style="padding-top:10px;">

@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -16,9 +17,13 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', '!=', auth()->id())->paginate(5);
-        $userLog = User::where('id', '=', auth()->id())->first();
-        return view('/users/list', ['users' => $user, 'cargo' => $userLog->cargo]);
+        if (Auth::user()->cargo == 'admin'){
+            $user = User::where('id', '!=', auth()->id())->paginate(5);
+            $userLog = User::where('id', '=', auth()->id())->first();
+            return view('/users/list', ['users' => $user, 'cargo' => $userLog->cargo]);
+        } else {
+            return redirect('/');
+        }
     }
 
     public static function getcargo()
@@ -34,7 +39,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        if (Auth::user()->cargo == 'admin'){
+            return view('users.create');
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -81,10 +90,14 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $checked['admin'] = $user['cargo'] == 'admin' ? "checked": "";
-        $checked['user'] = $user['cargo'] == 'user' ? "checked": "";
-        return view('users/edit', ['user' => $user, 'checked' => $checked]);
+        if (Auth::user()->cargo == 'admin'){
+            $user = User::findOrFail($id);
+            $checked['admin'] = $user['cargo'] == 'admin' ? "checked": "";
+            $checked['user'] = $user['cargo'] == 'user' ? "checked": "";
+            return view('users/edit', ['user' => $user, 'checked' => $checked]);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -130,7 +143,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::findOrFail($id)->delete();
-        return redirect('/users/list')->with(['msg' => 'apagado']);
+        if (Auth::user()->cargo == 'admin'){
+            User::findOrFail($id)->delete();
+            return redirect('/users/list')->with(['msg' => 'apagado']);
+
+        } else {
+            return redirect('/');
+        }
     }
 }

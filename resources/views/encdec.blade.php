@@ -3,7 +3,6 @@
 @section('title', 'Decriptografia')
 
 @section('content')
-
         <div id="event-create-container" class="col-md-6 offset-md-3" style="background-color: #181818; border-radius: 10px; padding-bottom: 150px; margin-top: 25px; padding-top: 50px;">
             <h1 style="color: #ffffff" >Decriptografar senha</h1>
             <form action="/encdec/post" method="POST" enctype="multipart/form-data">
@@ -15,7 +14,7 @@
                 <input type="submit" class="btn btn-primary" value="Decriptografar" style="margin-top: 25px">
             </form>
                 @if(!empty(session('resposta')))
-                    <div class="row justify-content-left" style="padding-top:10px; color: #ffffff;  font-size: 35px">
+                    <div class="row justify-content-left" style="padding-top:10px; color: #ffffff;  font-size: 35px; margin-left: 10px;">
                         <label>{{session('resposta')}}</label>
                     </div>
                 @endif
