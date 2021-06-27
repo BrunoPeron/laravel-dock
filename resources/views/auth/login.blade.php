@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Criar usuario')
+@section('title', 'Login')
 
 @section('content')
     <div class="container px-5 text-center">
@@ -14,20 +14,20 @@
                 <div class="col-md-12">
                     <div class="col" style="padding-top:10px; padding-left: 50px">
                         <div class="row" style="padding-top:10px; color: #ffffff; font-size: 35px">
-                            <label>Login de usuario</label>
+                            <label>Login de usuário</label>
                         </div>
-                        <form method="POST" action="{{ route('login') }}" style="background-color: #181818; color: #ffffff">
+                        <form method="POST" action="{{route('login')}}" style="background-color: #181818; color: #ffffff">
                             <div class="row justify-content-left">
                             <x-jet-validation-errors class="mb-4"/>
                                 @if (session('status'))
-                                    <div class="mb-2 font-medium text-sm text-green-600">
+                                    <div class="mb-2 font-medium text-sm text-red-600">
                                         {{ session('status') }}
                                     </div>
                                 @endif
                             </div>
                             <div class="row justify-content-left" style=" color: #b3b3b3; font-size: 20px">
                                 <label>Email</label>
-                                <input class="form-control" id="email" name="email" type="email" placeholder="Digite seu email de usuario" >
+                                <input class="form-control" id="email" name="email" type="email" placeholder="Digite seu email de usuário" >
                             </div>
                             <div class="row justify-content-left" style="padding-top:10px; color: #b3b3b3; font-size: 20px">
                                 <label>Senha</label>

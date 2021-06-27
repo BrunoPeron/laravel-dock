@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +20,7 @@ use App\Http\Controllers\LogsController;
 
 
 Route::get('/', function () {
-    $cargo = UsersController::getcargo();
-    return view('dashboard', ['cargo' => $cargo]);
+    return redirect('dashboard');
 })->middleware('auth');
 
 Route::get('/dashboard', function (){

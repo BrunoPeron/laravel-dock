@@ -1,12 +1,12 @@
 
 @extends('layouts.main')
 
-@section('title', 'Criar usuario')
+@section('title', 'Criar usuário')
 
 @section('content')
     <div id="event-create-container" class="col-md-6 offset-md-3" style="background-color: #181818; border-radius: 15px; margin-top: 20px    ">
         <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
-            <label>Criar usuario</label>
+            <label>Criar usuário</label>
         </div>
         @if(session('msg-alert'))
             <div class="mb-2 font-medium text-sm text-red-600">
@@ -21,8 +21,8 @@
         <form action="/users/post" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group" style="color: #b3b3b3;" >
-                <label for="title">Nome do usuario:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nome de usuario" required autofocus>
+                <label for="title">Nome do usuário:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nome de usuário" required autofocus>
             </div>
             <div class="form-group" style="color: #b3b3b3;">
                 <label for="title">Email:</label>
@@ -33,15 +33,15 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
             </div>
             <div class="form-group">
-                <label for="title" style="color: #b3b3b3;">Permissão do usuario</label>
+                <label for="title" style="color: #b3b3b3;">Permissão do usuário</label>
                 <div class="form-group" style="color: #b3b3b3;">
-                    <input type="radio"  name="cargo" value="user" style="margin-right: 10px" checked>  Usuario
+                    <input type="radio"  name="cargo" value="user" style="margin-right: 10px" checked>  Usuário
                 </div>
                 <div class="form-group" style="color: #b3b3b3;">
                     <input type="radio"  name="cargo" value="admin" style="margin-right: 10px">  Administrador
                 </div>
             </div>
-            <input type="submit" class="btn btn-primary" value="Criar Usuario">
+            <input type="submit" class="btn btn-primary" value="Criar Usuário">
         </form>
     </div>
 @endsection

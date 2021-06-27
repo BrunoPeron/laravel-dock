@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
@@ -18,7 +20,9 @@ class UsersController extends Controller
     public function index()
     {
         if (Auth::user()->cargo == 'admin'){
-            $user = User::where('id', '!=', auth()->id())->paginate(5);
+            $user = User::where('id', '!=', auth()->id())->
+                            where('status', '!=', 'disable')->paginate(5);
+
             $userLog = User::where('id', '=', auth()->id())->first();
             return view('/users/list', ['users' => $user, 'cargo' => $userLog->cargo]);
         } else {
@@ -52,6 +56,18 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public static function validateuser()
+    {
+        Session::flush();
+        redirect('/login');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         if (Auth::user()->cargo == 'admin'){
@@ -66,7 +82,7 @@ class UsersController extends Controller
             $user->cargo = $request->cargo;
             $user->password = Hash::make($request->password);
             $user->save();
-            return redirect('/users/create')->with('msg-sucess', 'Usuario cadastrado com sucesso');
+            return redirect('/users/create')->with('msg-sucess', 'Usuário cadastrado com sucesso');
         }
     }
 
@@ -131,7 +147,7 @@ class UsersController extends Controller
             $var = ['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request['password']), 'cargo' => $request->cargo];
 
             User::findOrFail($request->id)->update($var);
-            return redirect('/users/list')->with('msg', 'Usuario editado com sucesso');
+            return redirect('/users/list')->with('msg', 'Usuário editado com sucesso');
         }
     }
 
@@ -144,7 +160,8 @@ class UsersController extends Controller
     public function destroy($id)
     {
         if (Auth::user()->cargo == 'admin'){
-            User::findOrFail($id)->delete();
+            $randomString = substr(str_shuffle(md5(time())),0,6);
+            User::findOrFail($id)->update(['password' => Hash::make($randomString), 'status' => 'disable']);
             return redirect('/users/list')->with(['msg' => 'apagado']);
 
         } else {

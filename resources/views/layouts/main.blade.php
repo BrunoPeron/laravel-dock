@@ -37,32 +37,32 @@
                             <x-slot name="content">
                                 <div style="background-color: #1b5e20">
                                     <div class="block px-4 py-2 text-xs text-gray-400" style="background-color: #282828; color: #eaeaea; border-color: #272727">
-                                        {{ __('Manage Account') }}
+                                        {{ __('Gerenciar usuário') }}
                                     </div>
                                     <x-jet-dropdown-link href="{{ route('profile.show') }}" style="background-color: #282828; color: #eaeaea; border-color: #272727">
-                                        {{ __('Profile') }}
+                                        {{ __('Perfil') }}
                                     </x-jet-dropdown-link>
-                                    {{--                                <div class="border-t border-gray-100" style="border-bottom-color: #272727"></div>--}}
+                                                                    <div style="border-bottom-color: #272727"></div>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <x-jet-dropdown-link href="{{ route('logout') }}"
                                                              onclick="event.preventDefault();
                                                 this.closest('form').submit();" style="background-color: #282828; color: #eaeaea; border-color: #272727">
-                                            {{ __('Log Out') }}
+                                            {{ __('Sair') }}
                                         </x-jet-dropdown-link>
                                     </form>
                                 </div>
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
-                    {{--                    #fff--}}
+
                 @endauth
                 @guest
                     <li class="nav-item">
                         <a href="/login" class="nav-link" style="color: #b5b5b5">Entrar</a>
                     </li>
                 @endguest
-            </ul>
+{{--            </ul>--}}
         </div>
     </nav>
 </header>

@@ -14,7 +14,7 @@
                 <input type="submit" class="btn btn-primary" value="Decriptografar" style="margin-top: 25px">
             </form>
                 @if(!empty(session('resposta')))
-                    <div class="row justify-content-left" style="padding-top:10px; color: #ffffff;  font-size: 35px; margin-left: 10px;">
+                    <div class="row justify-content-left" style="padding-top:10px; color: #ffffff;  font-size: 30px; margin-left: 10px;">
                         <label>{{session('resposta')}}</label>
                     </div>
                 @endif

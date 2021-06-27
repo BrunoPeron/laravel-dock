@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Lista de usuarios')
+@section('title', 'Lista de usuário')
 
 @section('content')
     @if($cargo == 'admin')
@@ -8,7 +8,7 @@
             <div class="row" style="background-color: #181818; padding: 35px; border-radius: 15px; margin-top: 20px">
                 <div class="col-md-12">
                     <div class="row justify-content-left" style="padding-top:10px; color: #ffffff; font-size: 35px; padding-bottom: 20px">
-                        <label>Gerenciar usuarios do sistema</label>
+                        <label>Gerenciar usuário do sistema</label>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -66,7 +66,7 @@
                             {{ $users->links() }}
                         </div>
                         <div class="row justify-content-end">
-                            <a href="/users/create" class="btn btn-primary">Criar um usuario</a>
+                            <a href="/users/create" class="btn btn-primary">Criar um usuário</a>
                         </div>
                     </div>
                 <p1>{{$status ?? ''}}</p1>

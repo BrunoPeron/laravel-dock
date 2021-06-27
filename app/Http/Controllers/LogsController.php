@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\CryptPasswd;
 use App\Models\Logs;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LogsController extends Controller
 {
@@ -111,13 +113,14 @@ class LogsController extends Controller
      */
     public function store(Request $request)
     {
+        $decript = CryptPasswd::decript($request->string_request);
         $logs = new Logs();
         $logs->data_consulta = date('Y-m-d H:i:s');
-        $logs->string_request = md5($request->string_request);
+        $logs->string_request = md5($decript);
         $logs->id_user = auth()->id();
         $logs->save();
 
-        return redirect('/encdec')->with('resposta', $request->string_request);
+        return redirect('/encdec')->with('resposta', $decript);
     }
 
     /**
